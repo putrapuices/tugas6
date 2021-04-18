@@ -1,0 +1,165 @@
+.header {
+    grid-row: 1 / 2;
+    grid-column: center-start / center-end;
+
+    display: grid;
+    grid-template-rows: 95px 1fr;
+
+    @media only screen and (max-width: $bp-small) {
+        grid-template-rows: 65px 1fr;
+    }
+
+    &__navigation {
+        grid-row: 1 / 2;
+        align-self: end;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        @media only screen and (max-width: $bp-small) {
+            width: 150px;
+        }
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__checkbox:checked ~ &__container {
+        display: grid;
+    }
+
+    &__hamburger,
+    &__close {
+        cursor: pointer;
+    }
+
+    &__hamburger {
+        display: none;
+
+        @media only screen and (max-width: $bp-medium) {
+            display: block;
+        }
+    }
+
+    &__container {
+        @media only screen and (max-width: $bp-medium) {
+            display: none;
+
+            grid-template-columns: [full-start] 50px [center-start] 1fr [center-end] 50px [full-end];
+            grid-template-rows: 95px 1fr;
+
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background-color: $black;
+            z-index: 100;
+            gap: 0px;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            grid-template-columns: [full-start] 20px [center-start] 1fr [center-end] 20px [full-end];
+            grid-template-rows: 65px 1fr;
+        }
+    }
+
+    &__bar {
+        display: none;
+
+        @media only screen and (max-width: $bp-medium) {
+            align-self: end;
+            grid-column: center-start / center-end;
+            grid-row: 1 / 2;
+            
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__links {
+        display: grid;
+        grid-template-columns: repeat(5, min-content);
+        align-items: center;
+        gap: 30px;
+        list-style: none;
+
+        @media only screen and (max-width: $bp-medium) {
+            align-self: center;
+            grid-column: center-start / center-end;
+            grid-row: 2 / 3;
+            
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            animation: enter 1s cubic-bezier(0.25, 0.46, 0.26, 1.26);
+        }
+    }
+
+    &__anchor {
+        color: rgba($white, .85);
+        text-decoration: none;
+        position: relative;
+        letter-spacing: .2px;
+
+        &:hover {
+            &::after {
+                content: '';
+                width: 22px;
+                height: 1px;
+                background-color: $white;
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            text-transform: uppercase;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__box {
+        align-self: center;
+        border: 2px solid $white;
+        max-width: 650px;
+        width: 100%;
+        padding: 35px 35px 25px 35px;
+        transform: translateY(-8px);
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+            transform: translateY(-25px);
+        }
+    }
+
+    &__title {
+        font-family: $font-heading;
+        color: $white;
+        text-transform: uppercase;
+        font-size: 4.65rem;
+        letter-spacing: 2px;
+        font-weight: 300;
+
+        @media only screen and (max-width: $bp-medium) {
+            font-size: 4rem;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 3.1rem;
+            width: 280px;
+        }
+    }
+}

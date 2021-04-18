@@ -1,0 +1,94 @@
+// variable warna
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$dark-gray: hsl(0, 0%, 55%);
+$very-dark-gray: hsl(0, 0%, 41%);
+
+// variabel untuk font
+$font-primary: 'Alata', sans-serif;
+$font-heading: 'Josefin Sans', sans-serif;
+
+// Responsive Breakpoints -> 1em = 16px
+$bp-large: 68.75em; // 1100px / 16px = 68.75
+$bp-medium: 50em; // 800px / 16px = 50
+$bp-small: 37.5em; // 600px / 16px = 37.5
+
+$max-width: 1100px;
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 93.75%;
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: 87.5%;
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        font-size: 81.25%;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        font-size: 75%;
+    }
+}
+
+body {
+    font-family: $font-primary;
+    font-size: 15px;
+    color: $dark-gray;
+
+    display: grid;
+    grid-template-rows: 650px repeat(3, min-content);
+    grid-template-columns: [full-start] 1fr [center-start] minmax(min-content, $max-width) [center-end] 1fr [full-end];
+
+    @media only screen and (max-width: $bp-large) {
+        grid-template-columns: [full-start] 70px [center-start] 1fr [center-end] 70px [full-end];
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: 730px repeat(3, min-content);
+        grid-template-columns: [full-start] 50px [center-start] 1fr [center-end] 50px [full-end];
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        grid-template-rows: 100vh repeat(3, min-content);
+        grid-template-columns: [full-start] 20px [center-start] 1fr [center-end] 20px [full-end];
+    }
+
+    &::before {
+        content: '';
+        grid-row: 1 / 2;
+        grid-column: full-start / full-end;
+        background-image: url(../images/desktop/image-hero.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        filter: brightness(60%);
+        z-index: -1;
+
+        @media only screen and (max-width: $bp-small) {
+            background-image: url(../images/mobile/image-hero.jpg);
+        }
+    }
+
+    &::after {
+        content: '';
+        grid-row: 4 / 5;
+        grid-column: full-start / full-end;
+        background-color: $black;
+    }
+}

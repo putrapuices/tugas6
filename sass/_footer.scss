@@ -1,0 +1,101 @@
+.footer {
+    grid-row: 4 / 5;
+    grid-column: center-start / center-end;
+    z-index: 1;
+
+    padding: 45px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, min-content);
+    row-gap: 25px;
+
+    @media only screen and (max-width: $bp-medium) {
+        padding: 70px 0;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, min-content);
+    }
+
+    &__logo {
+        width: 145px;
+
+        @media only screen and (max-width: $bp-medium) {
+            justify-self: center;
+        }
+    }
+
+    &__icons {
+        justify-self: end;
+
+        display: grid;
+        grid-template-columns: repeat(4, min-content);
+        align-items: center;
+        gap: 15px;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-row: 3 / 4;
+            justify-self: center;
+        }
+    }
+
+    &__icon,
+    &__anchor {
+        &:hover {
+            &::after {
+                content: '';
+                width: 22px;
+                height: 1px;
+                background-color: $white;
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    &__icon {
+        position: relative;
+        cursor: pointer;
+    }
+
+    &__navigation {
+        @media only screen and (max-width: $bp-medium) {
+            margin: 20px 0;
+        }
+    }
+
+    &__links {
+        display: grid;
+        grid-template-columns: repeat(5, min-content);
+        align-items: center;
+        gap: 30px;
+        list-style: none;
+
+        @media only screen and (max-width: $bp-large) {
+            gap: 20px;
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(5, min-content);
+            justify-self: center;
+            justify-items: center;
+        }
+    }
+
+    &__anchor {
+        color: rgba($white, .85);
+        text-decoration: none;
+        position: relative;
+        letter-spacing: .2px;
+    }
+
+    &__copy {
+        justify-self: end;
+        color: $dark-gray;
+
+        @media only screen and (max-width: $bp-medium) {
+            justify-self: center;
+        }
+    }
+}

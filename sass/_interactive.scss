@@ -1,0 +1,94 @@
+.interactive {
+    grid-row: 2 / 3;
+    grid-column: center-start / center-end;
+
+    height: 500px;
+    margin: 160px 0;
+    display: grid;
+    grid-template-rows: 180px 1fr;
+    grid-template-columns: 1fr 35px 1fr;
+    
+    @media only screen and (max-width: $bp-medium) {
+        height: 700px;
+        margin: 140px 0;
+        grid-template-rows: 1fr min-content;
+        grid-template-columns: 1fr;
+        row-gap: 60px;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        height: 615px;
+        margin: 120px 0;
+    }
+
+    &::after {
+        content: '';
+        grid-row: 1 / 4;
+        grid-column: 1 / -1;
+        background-image: url(../images/desktop/image-interactive.jpg);
+        background-repeat: no-repeat;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-row: 1 / 2;
+            grid-column: 1 / -1;
+            background-image: url(../images/mobile/image-interactive.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    &__box {
+        grid-row: 2 / 3;
+        grid-column: 3 / -1;
+        background-color: $white;
+        z-index: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        @media only screen and (max-width: $bp-medium) {
+            grid-row: 2 / 3;
+            grid-column: 1 / -1;
+
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__texts {
+        max-width: 445px;
+        width: 95%;
+    }
+
+    &__title {
+        font-family: $font-heading;
+        color: $black;
+        text-transform: uppercase;
+        font-size: 3.2rem;
+        font-weight: 300;
+        margin-bottom: 25px;
+
+        @media only screen and (max-width: $bp-large) {
+            font-size: 2.7rem;
+            margin-bottom: 20px;
+        }
+
+        @media only screen and (max-width: $bp-medium) {
+            text-align: center;
+        }
+    }
+
+    &__description {
+        line-height: 25px;
+
+        @media only screen and (max-width: $bp-medium) {
+            text-align: center;
+        }
+
+        @media only screen and (max-width: $bp-small) {
+            max-width: 275px;
+            width: 100%;
+            margin: auto;
+        }
+    }
+}
